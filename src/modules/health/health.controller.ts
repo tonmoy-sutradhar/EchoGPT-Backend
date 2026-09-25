@@ -1,3 +1,4 @@
+// src/modules/health/health.controller.ts
 import { Controller, Get } from '@nestjs/common';
 import { ApiOperation, ApiTags, ApiOkResponse } from '@nestjs/swagger';
 import { HealthCheck } from '@nestjs/terminus';

@@ -1,3 +1,4 @@
+//src/common/interfaces/index.ts
 export interface ApiResponse<T = unknown> {
   success: boolean;
   statusCode: number;

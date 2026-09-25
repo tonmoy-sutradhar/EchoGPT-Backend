@@ -219,6 +219,9 @@ npm run docker:up
 npm run docker:down
 ```
 
+## Author
+# Tonmoy Sutradhar
+
 ## License
 
 MIT

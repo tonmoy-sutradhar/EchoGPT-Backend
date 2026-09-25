@@ -1,3 +1,4 @@
+// src/common/constants/index.ts
 export const IS_PUBLIC_KEY = 'isPublic';
 export const ROLES_KEY = 'roles';
 

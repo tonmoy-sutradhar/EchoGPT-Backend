@@ -1,3 +1,4 @@
+// src/common/decorators/roles.decorator.ts
 import { SetMetadata } from '@nestjs/common';
 import { Role } from '../enums/role.enum';
 import { ROLES_KEY } from '../constants';

@@ -1,3 +1,4 @@
+// src/common/utils/crypto.util.ts
 import * as bcrypt from 'bcrypt';
 
 const SALT_ROUNDS = 12;

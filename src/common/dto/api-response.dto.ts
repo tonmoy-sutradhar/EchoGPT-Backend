@@ -1,3 +1,4 @@
+// src/common/dto/api-response.dto.ts
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class ApiResponseDto<T = unknown> {
