@@ -1,7 +1,7 @@
+// src/database/data-source.ts
 import 'reflect-metadata';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { config as loadEnv } from 'dotenv';
-import { User } from '../modules/users/entities/user.entity';
 
 loadEnv();
 
@@ -19,7 +19,11 @@ export const dataSourceOptions: DataSourceOptions = {
   )
     ? { rejectUnauthorized: false }
     : false,
-  entities: [User],
+  entities: [
+    isCompiled
+      ? __dirname + '/../modules/**/*.entity.js'
+      : __dirname + '/../modules/**/*.entity.ts',
+  ],
   migrations: [
     isCompiled
       ? __dirname + '/migrations/*.js'
