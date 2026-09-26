@@ -91,6 +91,46 @@ export class AuthService {
     };
   }
 
+  // without verify email
+  // async login(dto: LoginDto, meta: RequestMeta) {
+  //   const user = await this.usersRepository.findOne({
+  //     where: { email: dto.email.toLowerCase() },
+  //     relations: ['role'],
+  //   });
+
+  //   if (!user || user.deletedAt) {
+  //     throw new UnauthorizedException('Invalid email or password');
+  //   }
+
+  //   const passwordValid = await comparePassword(
+  //     dto.password,
+  //     user.passwordHash,
+  //   );
+  //   if (!passwordValid) {
+  //     throw new UnauthorizedException('Invalid email or password');
+  //   }
+
+  //   if (
+  //     user.status === UserStatus.SUSPENDED ||
+  //     user.status === UserStatus.DELETED
+  //   ) {
+  //     throw new UnauthorizedException('This account is not active');
+  //   }
+
+  //   user.lastLoginAt = new Date();
+  //   await this.usersRepository.save(user);
+
+  //   const tokens = await this.issueTokens(user, meta);
+  //   this.logger.log(`User logged in: ${user.id}`);
+
+  //   return {
+  //     message: 'Login successful',
+  //     data: { user: this.usersService.toResponse(user), tokens },
+  //   };
+  // }
+
+  // src/modules/auth/auth.service.ts
+
   async login(dto: LoginDto, meta: RequestMeta) {
     const user = await this.usersRepository.findOne({
       where: { email: dto.email.toLowerCase() },
@@ -114,6 +154,12 @@ export class AuthService {
       user.status === UserStatus.DELETED
     ) {
       throw new UnauthorizedException('This account is not active');
+    }
+
+    if (user.status === UserStatus.PENDING_VERIFICATION) {
+      throw new UnauthorizedException(
+        'Please verify your email before logging in. Check your inbox for the verification link.',
+      );
     }
 
     user.lastLoginAt = new Date();

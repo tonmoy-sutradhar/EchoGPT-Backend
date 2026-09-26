@@ -14,7 +14,6 @@ import { Subscription } from './entities/subscription.entity';
 import { UsageCounter } from './entities/usage-counter.entity';
 import { User } from '../users/entities/user.entity';
 import { StripeService } from '../stripe/stripe.service';
-// import { SubscriptionStatus } from '../../common/enums/subscription-status.enum';
 import { SubscriptionStatus } from '../../common/enums/subscription-status.enum';
 import { PlanTier } from '../../common/enums/plan-tier.enum';
 
