@@ -20,9 +20,7 @@ export class RolesGuard implements CanActivate {
       context.getClass(),
     ]);
 
-    if (!requiredRoles || requiredRoles.length === 0) {
-      return true;
-    }
+    if (!requiredRoles || requiredRoles.length === 0) return true;
 
     const request = context
       .switchToHttp()
@@ -34,7 +32,6 @@ export class RolesGuard implements CanActivate {
         'You do not have permission to access this resource',
       );
     }
-
     return true;
   }
 }

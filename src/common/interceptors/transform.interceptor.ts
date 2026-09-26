@@ -22,37 +22,26 @@ export class TransformInterceptor<T> implements NestInterceptor<
       .getResponse<{ statusCode: number }>();
 
     return next.handle().pipe(
-      map((data) => {
+      map((result) => {
         if (
-          data &&
-          typeof data === 'object' &&
-          'success' in data &&
-          'statusCode' in data
+          result &&
+          typeof result === 'object' &&
+          'message' in result &&
+          'data' in result
         ) {
-          return data as unknown as ApiResponse<T>;
+          const { message, data } = result as { message: string; data: T };
+          return {
+            success: true,
+            statusCode: response.statusCode,
+            message,
+            data,
+          };
         }
-
-        const message =
-          data &&
-          typeof data === 'object' &&
-          'message' in data &&
-          typeof (data as { message: unknown }).message === 'string'
-            ? (data as { message: string }).message
-            : 'Success';
-
-        const payload =
-          data &&
-          typeof data === 'object' &&
-          'data' in data &&
-          'message' in data
-            ? (data as { data: T }).data
-            : data;
-
         return {
           success: true,
           statusCode: response.statusCode,
-          message,
-          data: payload,
+          message: 'Success',
+          data: result,
         };
       }),
     );

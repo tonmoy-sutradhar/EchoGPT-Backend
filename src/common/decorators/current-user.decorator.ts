@@ -11,11 +11,29 @@ export const CurrentUser = createParamDecorator(
       .switchToHttp()
       .getRequest<{ user: AuthenticatedUser }>();
     const user = request.user;
-
-    if (!user) {
-      return undefined;
-    }
-
+    if (!user) return undefined;
     return data ? user[data] : user;
   },
 );
+
+// // src/common/decorators/current-user.decorator.ts
+// import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+// import { AuthenticatedUser } from '../interfaces';
+
+// export const CurrentUser = createParamDecorator(
+//   (
+//     data: keyof AuthenticatedUser | undefined,
+//     ctx: ExecutionContext,
+//   ): AuthenticatedUser | string | undefined => {
+//     const request = ctx
+//       .switchToHttp()
+//       .getRequest<{ user: AuthenticatedUser }>();
+//     const user = request.user;
+
+//     if (!user) {
+//       return undefined;
+//     }
+
+//     return data ? user[data] : user;
+//   },
+// );

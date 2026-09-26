@@ -1,22 +1,22 @@
 // src/modules/users/dto/user-response.dto.ts
 import { ApiProperty } from '@nestjs/swagger';
-import { Role } from '../../../common/enums/role.enum';
+import { UserStatus } from '../../../common/enums/user-status.enum';
 
 export class UserResponseDto {
   @ApiProperty({ format: 'uuid' })
   id!: string;
 
   @ApiProperty()
-  name!: string;
+  fullName!: string;
 
   @ApiProperty()
   email!: string;
 
-  @ApiProperty({ enum: Role })
-  role!: Role;
-
   @ApiProperty()
-  isActive!: boolean;
+  role!: string;
+
+  @ApiProperty({ enum: UserStatus })
+  status!: UserStatus;
 
   @ApiProperty()
   createdAt!: Date;

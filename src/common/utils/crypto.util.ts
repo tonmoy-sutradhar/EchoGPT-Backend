@@ -16,9 +16,7 @@ export async function comparePassword(
 
 export function parseDurationToSeconds(duration: string): number {
   const match = /^(\d+)([smhd])$/i.exec(duration.trim());
-  if (!match) {
-    return 7 * 24 * 60 * 60;
-  }
+  if (!match) return 7 * 24 * 60 * 60;
 
   const value = parseInt(match[1], 10);
   const unit = match[2].toLowerCase();
