@@ -30,6 +30,7 @@ import { HealthModule } from './modules/health/health.module';
 import { RedisModule } from './modules/redis/redis.module';
 import { AiProvidersModule } from './modules/ai-providers/ai-providers.module';
 import { ChatModule } from './modules/chat/chat.module';
+import { WebSearchModule } from './modules/web-search/web-search.module';
 
 @Module({
   imports: [
@@ -88,6 +89,7 @@ import { ChatModule } from './modules/chat/chat.module';
     HealthModule,
     AiProvidersModule,
     ChatModule,
+    WebSearchModule,
   ],
   providers: [
     { provide: APP_FILTER, useClass: GlobalExceptionFilter },

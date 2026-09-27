@@ -13,4 +13,6 @@ export default registerAs('app', () => ({
   throttleTtl: parseInt(process.env.THROTTLE_TTL || '60', 10),
   throttleLimit: parseInt(process.env.THROTTLE_LIMIT || '100', 10),
   encryptionKey: process.env.ENCRYPTION_KEY,
+  serpApiKey: process.env.SERPAPI_KEY,
+  searchCacheTtlHours: parseInt(process.env.SEARCH_CACHE_TTL_HOURS || '24', 10),
 }));
