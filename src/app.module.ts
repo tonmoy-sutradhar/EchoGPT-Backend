@@ -29,6 +29,7 @@ import { SubscriptionsModule } from './modules/subscriptions/subscriptions.modul
 import { HealthModule } from './modules/health/health.module';
 import { RedisModule } from './modules/redis/redis.module';
 import { AiProvidersModule } from './modules/ai-providers/ai-providers.module';
+import { ChatModule } from './modules/chat/chat.module';
 
 @Module({
   imports: [
@@ -86,6 +87,7 @@ import { AiProvidersModule } from './modules/ai-providers/ai-providers.module';
     SubscriptionsModule,
     HealthModule,
     AiProvidersModule,
+    ChatModule,
   ],
   providers: [
     { provide: APP_FILTER, useClass: GlobalExceptionFilter },
