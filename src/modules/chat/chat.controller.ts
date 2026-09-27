@@ -1,4 +1,5 @@
 // src/modules/chat/chat.controller.ts
+// chat controller handles the chat related endpoints
 import {
   Controller,
   Get,
