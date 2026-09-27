@@ -13,6 +13,7 @@ import { Exclude } from 'class-transformer';
 import { Role } from '../../roles/entities/role.entity';
 import { Session } from '../../auth/entities/session.entity';
 import { UserStatus } from '../../../common/enums/user-status.enum';
+import { AiProvider } from '../../ai-providers/entities/ai-provider.entity';
 
 @Entity('users')
 export class User {
@@ -74,6 +75,10 @@ export class User {
 
   @OneToMany(() => Session, (session) => session.user)
   sessions?: Session[];
+
+  @ManyToOne(() => AiProvider, { onDelete: 'SET NULL', nullable: true })
+  @JoinColumn({ name: 'default_provider_id' })
+  defaultProvider?: AiProvider;
 }
 
 // // src/modules/users/entities/user.entity.ts

@@ -38,6 +38,7 @@ export interface EnvironmentVariables {
   APP_FRONTEND_URL: string;
   STRIPE_SECRET_KEY: string;
   STRIPE_WEBHOOK_SECRET: string;
+  ENCRYPTION_KEY: string;
 }
 
 function requireString(config: Record<string, unknown>, key: string): string {
@@ -109,6 +110,7 @@ export function validateEnv(
       (config.APP_FRONTEND_URL as string) || 'http://localhost:5173',
     STRIPE_SECRET_KEY: requireString(config, 'STRIPE_SECRET_KEY'),
     STRIPE_WEBHOOK_SECRET: requireString(config, 'STRIPE_WEBHOOK_SECRET'),
+    ENCRYPTION_KEY: requireString(config, 'ENCRYPTION_KEY'),
   };
 }
 

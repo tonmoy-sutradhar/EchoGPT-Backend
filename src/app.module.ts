@@ -28,6 +28,7 @@ import { StripeModule } from './modules/stripe/stripe.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 import { HealthModule } from './modules/health/health.module';
 import { RedisModule } from './modules/redis/redis.module';
+import { AiProvidersModule } from './modules/ai-providers/ai-providers.module';
 
 @Module({
   imports: [
@@ -84,6 +85,7 @@ import { RedisModule } from './modules/redis/redis.module';
     UsersModule,
     SubscriptionsModule,
     HealthModule,
+    AiProvidersModule,
   ],
   providers: [
     { provide: APP_FILTER, useClass: GlobalExceptionFilter },

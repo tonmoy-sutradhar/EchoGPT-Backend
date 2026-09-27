@@ -12,4 +12,5 @@ export default registerAs('app', () => ({
     .filter(Boolean),
   throttleTtl: parseInt(process.env.THROTTLE_TTL || '60', 10),
   throttleLimit: parseInt(process.env.THROTTLE_LIMIT || '100', 10),
+  encryptionKey: process.env.ENCRYPTION_KEY,
 }));
