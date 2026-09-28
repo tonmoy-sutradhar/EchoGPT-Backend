@@ -27,7 +27,7 @@ async function bootstrap() {
   const corsOrigins = configService.get<string[]>('app.corsOrigins') ?? [
     'http://localhost:3000',
   ];
-  const appName = configService.get<string>('app.name') ?? 'Backend Template';
+  const appName = configService.get<string>('app.name') ?? 'EchoGPT Backend';
 
   app.use(helmet());
   app.enableCors({
@@ -51,6 +51,49 @@ async function bootstrap() {
       transformOptions: { enableImplicitConversion: true },
     }),
   );
+
+  // const swaggerConfig = new DocumentBuilder()
+  //   .setTitle(appName)
+  //   .setDescription(
+  //     [
+  //       'AI Platform backend: authentication, users, Stripe subscriptions, multi-provider AI, chat, web search and admin APIs.',
+  //       '',
+  //       '**Authentication:** call `POST /auth/login`, copy `data.tokens.accessToken`, click **Authorize** and paste it.',
+  //       '',
+  //       '**Response envelope:** every response is `{ success, statusCode, message, data }`. Errors are `{ success: false, statusCode, message, errors?, timestamp, path }`.',
+  //       '',
+  //       '**Plan limits:** chat/search return `403` when the monthly plan limit is reached (`-1` in a plan means unlimited).',
+  //     ].join('\n'),
+  //   )
+  //   .setVersion('1.0')
+  //   .addServer(`http://localhost:${port}`, 'Local')
+  //   .addBearerAuth(
+  //     {
+  //       type: 'http',
+  //       scheme: 'bearer',
+  //       bearerFormat: 'JWT',
+  //       description: 'Enter JWT access token',
+  //     },
+  //     'access-token',
+  //   )
+  //   .addTag(
+  //     'Auth',
+  //     'Registration, login, sessions, email verification, password reset',
+  //   )
+  //   .addTag('Users', 'Profile management and admin user management')
+  //   .addTag(
+  //     'Subscriptions',
+  //     'Plans, subscription status, usage, Stripe checkout',
+  //   )
+  //   .addTag(
+  //     'AI Providers',
+  //     'Admin: manage OpenAI / Anthropic / Gemini providers',
+  //   )
+  //   .addTag('Chat', 'Conversations, prompts and streaming responses')
+  //   .addTag('Web Search', 'AI-assisted web search, history and suggestions')
+  //   .addTag('Admin', 'Admin: dashboard, analytics, logs, system health')
+  //   .addTag('Health', 'Public health check')
+  //   .build();
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle(appName)

@@ -78,7 +78,7 @@ export function validateEnv(
 
   return {
     NODE_ENV: nodeEnv as Environment,
-    APP_NAME: (config.APP_NAME as string) || 'Backend Template',
+    APP_NAME: (config.APP_NAME as string) || 'EchoGPT Backend',
     APP_PORT: requireNumber(config, 'APP_PORT'),
     API_PREFIX: (config.API_PREFIX as string) || 'api',
     CORS_ORIGINS: (config.CORS_ORIGINS as string) || 'http://localhost:3000',

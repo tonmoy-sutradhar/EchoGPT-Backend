@@ -28,16 +28,16 @@ Complete guide for this NestJS backend starter: architecture, request flow, auth
 
 This template is a reusable, production-oriented NestJS backend with:
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| Framework | NestJS | Modular API architecture |
-| Database | PostgreSQL + TypeORM | Persistent data + migrations |
-| Auth | JWT (access + refresh) | Secure login sessions |
-| Cache / tokens | Redis | Refresh-token storage, future caching/OTP |
-| Docs | Swagger | Interactive API docs at `/docs` |
-| Validation | class-validator | Request DTO validation |
-| Logging | Winston | Dev-friendly + production JSON logs |
-| Runtime | Docker Compose | App + Postgres + Redis |
+| Layer          | Technology             | Purpose                                   |
+| -------------- | ---------------------- | ----------------------------------------- |
+| Framework      | NestJS                 | Modular API architecture                  |
+| Database       | PostgreSQL + TypeORM   | Persistent data + migrations              |
+| Auth           | JWT (access + refresh) | Secure login sessions                     |
+| Cache / tokens | Redis                  | Refresh-token storage, future caching/OTP |
+| Docs           | Swagger                | Interactive API docs at `/docs`           |
+| Validation     | class-validator        | Request DTO validation                    |
+| Logging        | Winston                | Dev-friendly + production JSON logs       |
+| Runtime        | Docker Compose         | App + Postgres + Redis                    |
 
 All business APIs are versioned under:
 
@@ -179,30 +179,30 @@ REDIS_DB=0
 
 ### Variable reference
 
-| Variable | Required | Description | Example |
-|---|---|---|---|
-| `NODE_ENV` | No (default `development`) | `development` \| `production` \| `test` | `development` |
-| `APP_NAME` | No | App name shown in logs/Swagger | `Backend Template` |
-| `APP_PORT` | **Yes** | HTTP port | `3000` |
-| `API_PREFIX` | No | Global route prefix | `api` |
-| `CORS_ORIGINS` | No | Allowed origins (comma-separated) | `http://localhost:5173` |
-| `THROTTLE_TTL` | No | Throttle window in seconds | `60` |
-| `THROTTLE_LIMIT` | No | Max requests per window | `100` |
-| `LOG_LEVEL` | No | Winston level | `info` |
-| `DATABASE_HOST` | **Yes** | Postgres host | `localhost` |
-| `DATABASE_PORT` | **Yes** | Postgres port | `5432` |
-| `DATABASE_USERNAME` | **Yes** | DB user | `postgres` |
-| `DATABASE_PASSWORD` | **Yes** | DB password | `postgres` |
-| `DATABASE_NAME` | **Yes** | DB name | `backend_template` |
-| `DATABASE_SSL` | No | Enable SSL (`true`/`false`) | `false` |
-| `JWT_ACCESS_SECRET` | **Yes** | Access token signing secret | long random string |
-| `JWT_ACCESS_EXPIRES_IN` | No | Access TTL (`15m`, `1h`, …) | `15m` |
-| `JWT_REFRESH_SECRET` | **Yes** | Refresh token signing secret | long random string |
-| `JWT_REFRESH_EXPIRES_IN` | No | Refresh TTL | `7d` |
-| `REDIS_HOST` | **Yes** | Redis host | `localhost` |
-| `REDIS_PORT` | **Yes** | Redis port | `6379` |
-| `REDIS_PASSWORD` | No | Redis password (empty = none) | `` |
-| `REDIS_DB` | No | Redis logical DB index | `0` |
+| Variable                 | Required                   | Description                             | Example                 |
+| ------------------------ | -------------------------- | --------------------------------------- | ----------------------- |
+| `NODE_ENV`               | No (default `development`) | `development` \| `production` \| `test` | `development`           |
+| `APP_NAME`               | No                         | App name shown in logs/Swagger          | `EchoGPT Backend`       |
+| `APP_PORT`               | **Yes**                    | HTTP port                               | `3000`                  |
+| `API_PREFIX`             | No                         | Global route prefix                     | `api`                   |
+| `CORS_ORIGINS`           | No                         | Allowed origins (comma-separated)       | `http://localhost:5173` |
+| `THROTTLE_TTL`           | No                         | Throttle window in seconds              | `60`                    |
+| `THROTTLE_LIMIT`         | No                         | Max requests per window                 | `100`                   |
+| `LOG_LEVEL`              | No                         | Winston level                           | `info`                  |
+| `DATABASE_HOST`          | **Yes**                    | Postgres host                           | `localhost`             |
+| `DATABASE_PORT`          | **Yes**                    | Postgres port                           | `5432`                  |
+| `DATABASE_USERNAME`      | **Yes**                    | DB user                                 | `postgres`              |
+| `DATABASE_PASSWORD`      | **Yes**                    | DB password                             | `postgres`              |
+| `DATABASE_NAME`          | **Yes**                    | DB name                                 | `backend_template`      |
+| `DATABASE_SSL`           | No                         | Enable SSL (`true`/`false`)             | `false`                 |
+| `JWT_ACCESS_SECRET`      | **Yes**                    | Access token signing secret             | long random string      |
+| `JWT_ACCESS_EXPIRES_IN`  | No                         | Access TTL (`15m`, `1h`, …)             | `15m`                   |
+| `JWT_REFRESH_SECRET`     | **Yes**                    | Refresh token signing secret            | long random string      |
+| `JWT_REFRESH_EXPIRES_IN` | No                         | Refresh TTL                             | `7d`                    |
+| `REDIS_HOST`             | **Yes**                    | Redis host                              | `localhost`             |
+| `REDIS_PORT`             | **Yes**                    | Redis port                              | `6379`                  |
+| `REDIS_PASSWORD`         | No                         | Redis password (empty = none)           | ``                      |
+| `REDIS_DB`               | No                         | Redis logical DB index                  | `0`                     |
 
 ### Docker Compose note
 
@@ -219,10 +219,10 @@ because those are the Compose service names.
 
 ### Tokens
 
-| Token | Lifetime (default) | Stored where? | Used for |
-|---|---|---|---|
-| Access token | `15m` | Client only (memory/local storage) | Protect API routes |
-| Refresh token | `7d` | Client + **hashed copy in Redis** | Get new access token / logout revoke |
+| Token         | Lifetime (default) | Stored where?                      | Used for                             |
+| ------------- | ------------------ | ---------------------------------- | ------------------------------------ |
+| Access token  | `15m`              | Client only (memory/local storage) | Protect API routes                   |
+| Refresh token | `7d`               | Client + **hashed copy in Redis**  | Get new access token / logout revoke |
 
 Passwords are hashed with **bcrypt** (12 salt rounds). Raw JWT tokens are never logged.
 
@@ -430,16 +430,16 @@ Role:     ADMIN
 
 ### User entity fields
 
-| Field | Type | Notes |
-|---|---|---|
-| `id` | UUID | Primary key |
-| `name` | string | |
-| `email` | string | Unique |
-| `password` | string | Hashed, excluded from responses |
-| `role` | enum | `USER` \| `ADMIN` |
-| `isActive` | boolean | Inactive users cannot login |
-| `createdAt` | timestamptz | Auto |
-| `updatedAt` | timestamptz | Auto |
+| Field       | Type        | Notes                           |
+| ----------- | ----------- | ------------------------------- |
+| `id`        | UUID        | Primary key                     |
+| `name`      | string      |                                 |
+| `email`     | string      | Unique                          |
+| `password`  | string      | Hashed, excluded from responses |
+| `role`      | enum        | `USER` \| `ADMIN`               |
+| `isActive`  | boolean     | Inactive users cannot login     |
+| `createdAt` | timestamptz | Auto                            |
+| `updatedAt` | timestamptz | Auto                            |
 
 ---
 
@@ -481,16 +481,16 @@ Public endpoint (no JWT required).
 
 ## 12. How Security Is Applied
 
-| Feature | Implementation |
-|---|---|
-| HTTP headers | Helmet |
-| CORS | Configurable via `CORS_ORIGINS` |
-| Rate limiting | `@nestjs/throttler` |
-| Password hashing | bcrypt |
-| JWT secrets | From env only (never hardcoded) |
+| Feature                    | Implementation                                  |
+| -------------------------- | ----------------------------------------------- |
+| HTTP headers               | Helmet                                          |
+| CORS                       | Configurable via `CORS_ORIGINS`                 |
+| Rate limiting              | `@nestjs/throttler`                             |
+| Password hashing           | bcrypt                                          |
+| JWT secrets                | From env only (never hardcoded)                 |
 | Mass assignment protection | ValidationPipe whitelist + forbidNonWhitelisted |
-| Refresh revocation | Redis hash delete on logout |
-| Safe errors | Filter hides internals in production |
+| Refresh revocation         | Redis hash delete on logout                     |
+| Safe errors                | Filter hides internals in production            |
 
 ---
 
@@ -498,18 +498,18 @@ Public endpoint (no JWT required).
 
 Base URL: `http://localhost:3000/api/v1`
 
-| Method | Path | Auth | Description |
-|---|---|---|---|
-| `POST` | `/auth/register` | Public | Create account |
-| `POST` | `/auth/login` | Public | Login |
-| `POST` | `/auth/refresh` | Public | Rotate tokens |
-| `POST` | `/auth/logout` | Bearer | Revoke refresh token |
-| `GET` | `/users/me` | Bearer | Current user profile |
-| `GET` | `/users` | Admin | List users |
-| `GET` | `/users/:id` | Admin | Get user by id |
-| `PATCH` | `/users/:id` | Admin | Update user |
-| `DELETE` | `/users/:id` | Admin | Delete user |
-| `GET` | `/health` | Public | Health status |
+| Method   | Path             | Auth   | Description          |
+| -------- | ---------------- | ------ | -------------------- |
+| `POST`   | `/auth/register` | Public | Create account       |
+| `POST`   | `/auth/login`    | Public | Login                |
+| `POST`   | `/auth/refresh`  | Public | Rotate tokens        |
+| `POST`   | `/auth/logout`   | Bearer | Revoke refresh token |
+| `GET`    | `/users/me`      | Bearer | Current user profile |
+| `GET`    | `/users`         | Admin  | List users           |
+| `GET`    | `/users/:id`     | Admin  | Get user by id       |
+| `PATCH`  | `/users/:id`     | Admin  | Update user          |
+| `DELETE` | `/users/:id`     | Admin  | Delete user          |
+| `GET`    | `/health`        | Public | Health status        |
 
 Interactive docs: **http://localhost:3000/docs**
 
@@ -555,11 +555,11 @@ Migrations run automatically in the container when `RUN_MIGRATIONS=true`.
 
 ### Services
 
-| Service | Image / build | Port |
-|---|---|---|
-| `backend` | NestJS Dockerfile | `3000` |
+| Service    | Image / build        | Port   |
+| ---------- | -------------------- | ------ |
+| `backend`  | NestJS Dockerfile    | `3000` |
 | `postgres` | `postgres:16-alpine` | `5432` |
-| `redis` | `redis:7-alpine` | `6379` |
+| `redis`    | `redis:7-alpine`     | `6379` |
 
 Postgres and Redis use named volumes for persistence.
 
