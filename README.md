@@ -234,8 +234,8 @@ Users must verify their email before they can log in.
 | Plan            | Price   | Chat / month | Search / month |
 | --------------- | ------- | ------------ | -------------- |
 | Free            | $0      | 50           | 20             |
-| Premium Monthly | $19.99  | Unlimited    | Unlimited      |
-| Premium Yearly  | $199.99 | Unlimited    | Unlimited      |
+| Premium Monthly | $100.00 | Unlimited    | Unlimited      |
+| Premium Yearly  | $500.00 | Unlimited    | Unlimited      |
 
 Limits and prices are seeded by migration and can be changed in the `plans` table. Actual charges are defined by your Stripe prices.
 
@@ -264,13 +264,6 @@ docker compose up -d --build
 ```
 
 The `backend` service uses the Dockerfile in the repo root and connects to the `postgres` and `redis` services on the internal network.
-
-## Testing
-
-```bash
-npm run test        # unit tests
-npm run test:e2e    # e2e tests (requires PostgreSQL and Redis running)
-```
 
 ## Security Notes
 
