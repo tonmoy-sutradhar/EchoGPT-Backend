@@ -234,4 +234,18 @@ export class AiProvidersService {
       updatedAt: provider.updatedAt,
     };
   }
+
+  async listPublicProviders() {
+    const providers = await this.providersRepository.find({
+      where: { isEnabled: true, deletedAt: undefined },
+      order: { createdAt: 'ASC' },
+    });
+
+    return providers.map((p) => ({
+      id: p.id,
+      name: p.name,
+      displayName: p.displayName,
+      isDefault: p.isDefault,
+    }));
+  }
 }

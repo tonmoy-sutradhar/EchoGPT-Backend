@@ -6,12 +6,13 @@ import { ProviderModel } from './entities/provider-model.entity';
 import { ProviderHealthCheck } from './entities/provider-health-check.entity';
 import { AiProvidersService } from './ai-providers.service';
 import { AiProvidersController } from './ai-providers.controller';
+import { PublicProvidersController } from './public-providers.controller';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([AiProvider, ProviderModel, ProviderHealthCheck]),
   ],
-  controllers: [AiProvidersController],
+  controllers: [AiProvidersController, PublicProvidersController],
   providers: [AiProvidersService],
   exports: [AiProvidersService],
 })
