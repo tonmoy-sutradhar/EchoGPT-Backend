@@ -2,6 +2,10 @@
 
 A production-oriented NestJS backend for an AI platform: authentication, user management, Stripe-backed subscriptions, multi-provider AI (OpenAI, Anthropic, Gemini), chat with streaming, AI-assisted web search, and an admin panel API.
 
+[EchoGPT Database Schema Design.pdf](https://drive.google.com/file/d/1MKs2I8TD4Yu9bRod7Kwi9r519H5EQnf-/view?usp=sharing)
+[EchoGPT Diagram Design](https://drive.google.com/file/d/1BKdqH3OKt4pKmZIosygoSlppE_Mfez6X/view?usp=sharing)
+[Postman collection](https://drive.google.com/file/d/1X8hqK10_nIRTaWfWVEZ1kHDwZyVFDRYm/view?usp=sharing)
+
 ## Tech Stack
 
 | Area          | Technology                                                        |
