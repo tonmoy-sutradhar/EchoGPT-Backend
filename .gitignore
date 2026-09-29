@@ -5,8 +5,6 @@ build
 coverage
 
 # Environment
-.env
-.env.local
 .env.*.local
 
 # Logs
@@ -18,9 +16,12 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 .idea
-.vscode
 *.swp
 
 # Test / temp
 .tmp
 .temp
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+config.bat
